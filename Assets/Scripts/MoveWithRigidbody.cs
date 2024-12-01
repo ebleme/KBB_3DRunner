@@ -35,7 +35,7 @@ namespace Ebleme.KBB3DRunner
 
             if (moveX == 0 && moveZ == 0)
                 return;
-                
+        
             Vector3 movement = new Vector3(moveX, 0, moveZ) * moveSpeed * Time.fixedDeltaTime;
 
             rb.MovePosition(rb.position + movement);

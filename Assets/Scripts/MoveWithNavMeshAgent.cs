@@ -1,4 +1,5 @@
 using Unity.Cinemachine;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Ebleme.KBB3DRunner
@@ -11,6 +12,7 @@ namespace Ebleme.KBB3DRunner
 
         public Transform findObject;
 
+        bool isFindObject;
         void Start()
         {
             agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -33,13 +35,37 @@ namespace Ebleme.KBB3DRunner
             {
                 agent.Move(movement * Time.deltaTime * moveSpeed);
             }
+
+            if (movement.x > 0)
+                transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+            else if (movement.x < 0)
+                transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
+            else if (movement.z > 0)
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            else if (movement.z < 0)
+                transform.rotation = Quaternion.Euler(new Vector3(0, -180, 0));
+
+
+            if (isFindObject)
+            {
+                if (agent.remainingDistance < 0.1f)
+                {
+                    agent.isStopped = true;
+                    isFindObject = false;
+                }
+            }
+
         }
 
 
         [ContextMenu("Find Object")]
         public void GoToPosition()
         {
+
             agent.destination = findObject.position;
+            agent.isStopped = false;
+
+            isFindObject = true;
         }
     }
 }

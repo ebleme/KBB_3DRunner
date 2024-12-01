@@ -29,12 +29,19 @@ namespace Ebleme.KBB3DRunner
             Vector3 force = new Vector3(moveX, 0, moveZ) * moveSpeed;
             rb.AddForce(force);
 
+
             // Tork uygula
             Vector3 torque = new Vector3(moveZ, 0, -moveX) * torqueSpeed;
             rb.AddTorque(torque);
             
             // movementInput = new Vector3(moveX, 0, moveZ) * moveSpeed;
 
+        }
+
+        [ContextMenu("Stop")]
+        public void Stop(){
+             rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
         }
         
         // void FixedUpdate()

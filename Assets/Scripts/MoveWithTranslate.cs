@@ -29,7 +29,7 @@ namespace Ebleme.KBB3DRunner
         void Update()
         {
             float moveX = Input.GetAxis("Horizontal"); // A, D veya Sol/Sağ oklar
-            float moveZ = Input.GetAxis("Vertical"); // W, S veya Yukarı/Aşağı oklar
+            float moveZ = Input.GetAxis("Vertical"); // Dikey // W, S veya Yukarı/Aşağı oklar
             
             if (moveX == 0 && moveZ == 0)
                 return;
@@ -37,6 +37,10 @@ namespace Ebleme.KBB3DRunner
             Vector3 movement = new Vector3(moveX, 0, moveZ);
 
             transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
+
+            //(1,0,1) * 5 * deltaTime 1.2ms  120 fps 
+            //(1,0,1) * 5 * deltaTime 3ms     30 fps
+
         }
     }
 }
