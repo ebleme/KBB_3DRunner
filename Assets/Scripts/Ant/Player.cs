@@ -9,11 +9,13 @@ namespace Ebleme.KBB3DRunner.Ant
         [SerializeField] private PlayerMovement playerMovement;
         [SerializeField] private PlayerSounds playerSounds;
         [SerializeField] private PlayerParticleFX playerParticleFX;
+        [SerializeField] private EnergyBar energyBar;
         
         
         private void Start()
         {
             playerAnimation.RunFast();
+            energyBar.Set(100f);
         }
 
         [ContextMenu("Dead")]
@@ -29,6 +31,14 @@ namespace Ebleme.KBB3DRunner.Ant
             
             // particle
             playerParticleFX.PlaySmoke();
+        }
+
+        private void Update()
+        {
+            // Movement Speed = */ EenrgyBar.Energy
+            var energy = energyBar.CurrentEnergyForMoveFactor();
+            Debug.Log(energy);
+            playerMovement.SetMoveFactor(energy);
         }
     }
 }

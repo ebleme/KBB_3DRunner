@@ -20,6 +20,13 @@ public class PlayerMovement : MonoBehaviour
     private float moveFactorX;
     private float lastFrameFingerPositionX;
 
+    private float moveFactor;
+
+    public void SetMoveFactor(float val)
+    {
+        moveFactor = moveSpeed * val;
+    }
+    
     public void ChangeMoving(bool isMoving)
     {
         this.isMoving = isMoving;
@@ -37,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
         if (!isMoving)
             return;
 
-        Vector3 forwardMove = transform.forward * (moveSpeed * Time.fixedDeltaTime);
+        Vector3 forwardMove = transform.forward * (moveFactor * Time.fixedDeltaTime);
 
         // Swerve hareketi
         Vector3 horizontalMove = transform.right * moveFactorX;
