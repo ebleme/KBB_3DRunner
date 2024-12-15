@@ -28,26 +28,10 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         swerveInput = -Input.GetAxis("Horizontal");
-        
+
         HandleInput();
     }
-
-    // void FixedUpdate()
-    // {
-    //     if (!isMoving)
-    //         return;
-    //     
-    //     Vector3 movePos = moveSpeed * Time.fixedDeltaTime * Vector3.right;
-    //     
-    //     movePos.z = swerveInput * swerveSpeed * Time.fixedDeltaTime;
-    //
-    //     var newPos = rb.position + movePos;
-    //     newPos.z = Mathf.Clamp(newPos.z, minMax.x, minMax.y);
-    //     
-    //     rb.MovePosition(newPos);
-    // }
-
-
+    
     void FixedUpdate()
     {
         if (!isMoving)
@@ -73,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         //     // AD tuşları
         // }
 
-#if UNITY_STANDALONE
+#if UNITY_STANDALONE || UNITY_EDITOR
 
         if (Input.GetMouseButtonDown(0)) // sol mouse basıldığında
         {
@@ -89,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         {
             moveFactorX = 0f;
         }
-    }
+
 
 #elif UNITY_IOS || UNITY_ANDROID
         // Mobil cihazlar için touch inputu
@@ -115,5 +99,4 @@ public class PlayerMovement : MonoBehaviour
         }
 #endif
     }
-
 }
