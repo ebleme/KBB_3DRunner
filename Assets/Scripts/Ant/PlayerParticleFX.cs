@@ -6,9 +6,17 @@ namespace Ebleme.KBB3DRunner.Ant
     {
         [SerializeField] private ParticleSystem smokeParticle;
 
+        [SerializeField] private ParticleSystem collectibleFX;
+        
+
         public void PlaySmoke()
         {
             smokeParticle.Play();
+        }
+
+        public void PlayCollectibleFX()
+        {
+            collectibleFX.Play();
         }
     }
 }
