@@ -12,23 +12,15 @@ public class Obstacle : MonoBehaviour
      * 5. Animasyon bittikten sonra game over paneli gösterilsin (sahneyi yenileyebiliriz)
      * 6. Reklam gösterebiliriz
      */
-    
-    
-    
+
+
     private void OnCollisionEnter(Collision _collidedObject)
     {
         if (_collidedObject.gameObject.CompareTag("Ant"))
         {
             Debug.Log("karınca çarptı");
 
-            var player = FindFirstObjectByType<Player>();
-
-            if (player != null)
-            {
-                player.Dead();
-                
-               
-            }
+            Player.Instance.Dead();
         }
     }
 }

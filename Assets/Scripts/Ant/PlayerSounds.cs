@@ -8,14 +8,21 @@ public class PlayerSounds : MonoBehaviour
     [SerializeField] private AudioClip gameOver;
     [SerializeField] private AudioClip success;
 
+    [SerializeField] private AudioClip collected;
+    
 
     public void PlayerGameOver()
     {
         audioSource.PlayOneShot(gameOver);
     }
 
-    public void PlaSuccess()
+    public void PlaySuccess()
     {
         audioSource.PlayOneShot(success);
+    }
+
+    public void PlayCollected()
+    {
+        audioSource.PlayOneShot(collected);
     }
 }

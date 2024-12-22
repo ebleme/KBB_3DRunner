@@ -59,6 +59,7 @@ namespace Ebleme.KBB3DRunner
         /// <param name="val"></param>
         public void Increase(float val)
         {
+            isDecreasing = false;
             currentEnergy += val;
             ClampEnergyValue();
             SetSlider();
